@@ -1,4 +1,7 @@
-on: [push]
+on:
+  push:
+    branches:
+    - build_branch
 
 jobs:
   hello_world_job:
@@ -9,8 +12,10 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Echo Step
+        run: echo -e "Hello Jeffry copps"
       - name: Hello world action step
-        uses: ./action.yml # Uses an action in the root directory
+        uses: ./ # Uses an action in the root directory
         id: hello
         with:
           who-to-greet: 'Mona the Octocat'
